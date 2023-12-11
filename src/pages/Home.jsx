@@ -4,6 +4,11 @@ import useTokenData from "../helpers/tokenData";
 import NavBar from "../components/NavBar";
 import { ListApps } from "../pages/loaders/appLoaders";
 import HomeCarousel from "../components/HomeCarousel";
+import Banner from "../components/Banner";
+import Benchmarks from "../components/Benchmarks";
+import HomeQuote from "../components/HomeQuote";
+import Advantages from "../components/Advantages";
+import Footer from "../components/Footer";
 
 export async function appLoader() {
     const apps = await ListApps();
@@ -80,9 +85,8 @@ function Home() {
     };
 
     return (
-        <div className="flex flex-col flex-nowrap w-inherit vh:h-screen font-sans" ref={scrollContainerRef}>
+        <div className="" ref={scrollContainerRef}>
             {/* {navigation.state === "loading" && <PageLoader />} */}
-            <NavBar showAddAppButton={true} />
             {
                 isLoggedIn && tokenData?.is_verified !== undefined && !tokenData?.is_verified
                     ? <div className={"sticky px:top-80 flex flex-row align-items-center pad-1 bg-yellow-inverse bg-mica z-90 lg:justify-center"}>
@@ -96,7 +100,10 @@ function Home() {
                     </div>
                     : null
             }
-            <HomeCarousel />
+            <Banner />
+            <Benchmarks />
+            <HomeQuote />
+            <Advantages />
         </div>
     )
 }
